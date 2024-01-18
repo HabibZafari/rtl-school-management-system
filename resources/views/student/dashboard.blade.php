@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
         <div class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
@@ -14,10 +15,10 @@
                             <li class="breadcrumb-item active">داشبورد ورژن 2</li>
                         </ol>
                     </div> --}}
-                </div>
-            </div>
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
         </div>
-
+        <!-- /.content-header -->
 
         <!-- Main content -->
         <section class="content">

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\backend\AuthController;
+use App\Http\Controllers\backend\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,13 +18,26 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/',[AuthController::class,'login']);
-Route::post('login',[AuthController::class,'authlogin']);
+Route::get('/', [AuthController::class, 'login']);
+Route::post('login', [AuthController::class, 'authlogin']);
 Route::post('/admin/logout', [AuthController::class, 'logout'])->name('admin.logout');
+Route::get('forgot-password', [AuthController::class, 'forgotpassword']);
 
-Route::get('admin/dashboard', function () {
-    return view('admin.dashboard');
-});
+
 Route::get('admin/admin/list', function () {
     return view('admin.admin.list');
+});
+
+Route::group(['middleware' => 'admin'], function () {
+    Route::get('admin/dashboard', [DashboardController::class, 'dashboard']);
+});
+Route::group(['middleware' => 'parent'], function () {
+    Route::get('parent/dashboard', [DashboardController::class, 'dashboard']);
+});
+
+Route::group(['middleware' => 'teacher'], function () {
+    Route::get('teacher/dashboard', [DashboardController::class, 'dashboard']);
+});
+Route::group(['middleware' => 'student'], function () {
+    Route::get('student/dashboard', [DashboardController::class, 'dashboard']);
 });
