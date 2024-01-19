@@ -37,7 +37,7 @@
             <div class="card-body login-card-body">
                 <p class="login-box-msg">رمز عبور خود را تغییر دهید</p>
                 @include('_message')
-                <form action="{{ url('login') }}" method="post">
+                <form action="{{ url('forgot-password') }}" method="post">
                     @csrf
                     <div class="input-group mb-3">
                         <input type="email" class="form-control" name="email" placeholder="ایمیل" required>
@@ -46,21 +46,21 @@
                         </div>
                     </div>
 
-                    <div class="row">
+                    {{-- <div class="row"> --}}
                         <div class="col-4">
                             <button type="submit" class="btn btn-primary btn-block btn-flat">ورود</button>
                         </div>
-                    </div>
+                    {{-- </div> --}}
 
 
             </div>
             </form>
 
             <p class="mb-1">
-                <a href="{{ url('forgot-password') }}">رمز عبورم را فراموش کرده ام.</a>
+                <a href="{{ url('forgot-password') }}">رمز عبورم را فراموش کرده اید .</a>
             </p>
             <p class="mb-0">
-                <a href="register.html" class="text-center">تغییر رمز عبور</a>
+                <a href="{{url('login')}}" class="text-center">ورود</a>
             </p>
         </div>
 

@@ -78,7 +78,7 @@
       <!-- /.social-auth-links -->
 
       <p class="mb-1">
-        <a href="{{url('forgot-password')}}">رمز عبورم را فراموش کرده ام.</a>
+        <a href="{{url('forgot-password')}}">رمز عبورم را فراموش کرده اید.</a>
       </p>
       <p class="mb-0">
         <a href="register.html" class="text-center">ثبت نام</a>
