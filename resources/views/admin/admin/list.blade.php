@@ -10,11 +10,8 @@
                     <div class="col-sm-6">
                         <h1>لیست ادمین ها</h1>
                     </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-left">
-                            <li class="breadcrumb-item"><a href="#">خانه</a></li>
-                            <li class="breadcrumb-item active">ادمین ها</li>
-                        </ol>
+                    <div class="col-sm-6" style="text-align: left">
+                        <a href="{{url('admin/admin/add')}}" class="btn btn-primary"><i class="fa fa-user-plus"></i> ایجاد ادمین جدید</a>
                     </div>
                 </div>
             </div><!-- /.container-fluid -->
@@ -26,60 +23,39 @@
                 <div class="row">
 
                     <div class="col-md-12">
+                        @include('_message')
 
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">جدول 4</h3>
+                                <h3 class="card-title">لیست ادمین</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body p-0">
                                 <table class="table table-striped">
-                                    <tr>
-                                        <th style="width: 10px">#</th>
-                                        <th>فعالیت</th>
-                                        <th>پیشرفت</th>
-                                        <th style="width: 40px">درصد</th>
-                                    </tr>
-                                    <tr>
-                                        <td>1.</td>
-                                        <td>آپدیت نرم افزار</td>
-                                        <td>
-                                            <div class="progress progress-xs">
-                                                <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                                            </div>
-                                        </td>
-                                        <td><span class="badge bg-danger">55%</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2.</td>
-                                        <td>بهینه سازی دیتابیس</td>
-                                        <td>
-                                            <div class="progress progress-xs">
-                                                <div class="progress-bar bg-warning" style="width: 70%"></div>
-                                            </div>
-                                        </td>
-                                        <td><span class="badge bg-warning">70%</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3.</td>
-                                        <td>اجرای کرون جابز‌</td>
-                                        <td>
-                                            <div class="progress progress-xs progress-striped active">
-                                                <div class="progress-bar bg-primary" style="width: 30%"></div>
-                                            </div>
-                                        </td>
-                                        <td><span class="badge bg-primary">30%</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>4.</td>
-                                        <td> رفع باگ های نرم افزاری</td>
-                                        <td>
-                                            <div class="progress progress-xs progress-striped active">
-                                                <div class="progress-bar bg-success" style="width: 90%"></div>
-                                            </div>
-                                        </td>
-                                        <td><span class="badge bg-success">90%</span></td>
-                                    </tr>
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>اسم</th>
+                                            <th>ایمیل</th>
+                                            <th>تاریخ ایجاد</th>
+                                            <th>دستکاری</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($getRecord as $value)
+                                            <tr>
+                                                <td>{{$value->id}}</td>
+                                                <td>{{$value->name}}</td>
+                                                <td>{{$value->email}}</td>
+                                                <td>{{$value->created_at}}</td>
+                                                <td>
+                                                    <a href="{{url('admin/admin/edit/'.$value->id)}}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                                                    <a href="{{url('admin/admin/delete/'.$value->id)}}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+
                                 </table>
                             </div>
                             <!-- /.card-body -->
