@@ -33,15 +33,20 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label>اسم</label>
-                                        <input type="name" name="name" class="form-control" placeholder="اسم را وارد کنید" required>
+                                        <input type="name" name="name" value="{{ old('name') }}" class="form-control"
+                                            placeholder="اسم را وارد کنید" required>
                                     </div>
                                     <div class="form-group">
                                         <label>آدرس ایمیل</label>
-                                        <input type="email" name="email" class="form-control" placeholder="ایمیل را وارد کنید" required>
+                                        <input type="email" name="email" value="{{ old('email') }}" class="form-control"
+                                            placeholder="ایمیل را وارد کنید" required>
+                                        @error('email')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <label>پسورد</label>
-                                        <input type="password" name="password" class="form-control" 
+                                        <input type="password" name="password" class="form-control"
                                             placeholder="پسورد را وارد کنید" required>
                                     </div>
                                 </div>

@@ -25,6 +25,12 @@ class AdminController extends Controller
 
     public function insert(Request $request)
     {
+        request()->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8'],
+        ]);
+        
         $user = new User();
         $user->name = trim($request->name);
         $user->email = trim($request->email);
@@ -47,6 +53,9 @@ class AdminController extends Controller
 
     public function update(Request $request, $id)
     {
+        request()->validate([
+            'email' => 'required|email|unique:users,email,' . $id,
+        ]);
         $user = User::getSingle($id);
         $user->name = trim($request->name);
         $user->email = trim($request->email);
@@ -56,5 +65,13 @@ class AdminController extends Controller
         }
         $user->save();
         return redirect('/admin/admin/list')->with('success', 'Admin updated successfully');
+    }
+
+    public function delete($id)
+    {
+        $user = User::getSingle($id);
+        $user->is_delete = 1;
+        $user->delete();
+        return redirect('/admin/admin/list')->with('success', 'Admin deleted successfully');
     }
 }

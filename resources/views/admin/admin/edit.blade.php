@@ -28,22 +28,28 @@
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form role="form" action="{{ url('admin/admin/edit') }}" method="POST">
+                            <form role="form" action="" method="POST">
+                                {{-- <form role="form" action="{{ url('admin/admin/edit/' . $getRecord->id) }}" method="POST"> --}}
                                 @csrf
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label>اسم</label>
-                                        <input type="name" name="name" value="{{ $getRecord->name }}" class="form-control" placeholder="اسم را وارد کنید">
+                                        <input type="text" name="name"
+                                            class="form-control" value="{{ $getRecord->name }}" placeholder="اسم را وارد کنید">
                                     </div>
                                     <div class="form-group">
                                         <label>آدرس ایمیل</label>
-                                        <input type="email" name="email" value="{{ $getRecord->email }}" class="form-control" placeholder="ایمیل را وارد کنید">
+                                        <input type="email" name="email" 
+                                            class="form-control" value="{{ $getRecord->email }}" placeholder="ایمیل را وارد کنید">
+                                        @error('email')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
                                         <label>پسورد</label>
-                                        <input type="password"  name="password" class="form-control" 
+                                        <input type="password" name="password" class="form-control"
                                             placeholder="پسورد را وارد کنید">
-                                            <p>پسورد خود را تغییر دهید و اگر نمیخواهید پسورد خود را تغییر دهید خالی بگذارید</p>
+                                        <p>پسورد خود را تغییر دهید و اگر نمیخواهید پسورد خود را تغییر دهید خالی بگذارید</p>
                                     </div>
                                 </div>
                                 <!-- /.card-body -->

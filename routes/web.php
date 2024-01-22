@@ -37,6 +37,8 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('admin/admin/edit/{id}', [AdminController::class, 'update']);
     Route::get('admin/admin/delete/{id}', [AdminController::class, 'delete']);
 
+    //class urls
+    
     
 });
 Route::group(['middleware' => 'parent'], function () {
