@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use Request;
+use Illuminate\Support\Facades\Request;
 
 class User extends Authenticatable
 {
@@ -65,7 +65,7 @@ class User extends Authenticatable
                 $return = $return->where('email', 'like', '%'.Request::get('email').'%');
             }
             
-        $return =  $return->orderBy('id', 'desc')->paginate(10);
+        $return =  $return->orderBy('id', 'desc')->paginate(3);
         return $return;
     }
 

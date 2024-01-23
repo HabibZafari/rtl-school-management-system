@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\backend\AdminController;
 use App\Http\Controllers\backend\AuthController;
+use App\Http\Controllers\backend\ClassController;
 use App\Http\Controllers\backend\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -38,7 +39,13 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/admin/delete/{id}', [AdminController::class, 'delete']);
 
     //class urls
-    
+
+    Route::get('admin/class/list', [ClassController::class, 'classList']);
+    Route::get('admin/class/add', [ClassController::class, 'classAdd']);
+    Route::post('admin/class/add', [ClassController::class, 'classInsert']);
+    Route::get('admin/class/edit/{id}', [ClassController::class, 'classEdit']);
+    Route::post('admin/class/edit/{id}', [ClassController::class, 'classUpdate']);
+    Route::get('admin/class/delete/{id}', [ClassController::class, 'classDelete']);
     
 });
 Route::group(['middleware' => 'parent'], function () {
