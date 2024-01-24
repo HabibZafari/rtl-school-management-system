@@ -15,13 +15,16 @@ class SubjectModel extends Model
 
     static public function getRecord()
     {
-        $return =  ClassModel::select('class.*', 'users.name as created_by_name')
-            ->join('users', 'users.id', 'class.created_by');
+        $return =  SubjectModel::select('subject.*', 'users.name as created_by_name')
+            ->join('users', 'users.id', 'subject.created_by');
             if (!empty(Request::get('name'))) {
-                $return = $return->where('class.name', 'like', '%'.Request::get('name').'%');
+                $return = $return->where('subject.name', 'like', '%'.Request::get('name').'%');
             }
-            $return = $return->where('class.is_delete', '=', 0)
-            ->orderBy('class.id', 'desc')
+            if (!empty(Request::get('type'))) {
+                $return = $return->where('subject.type', 'like', '%'.Request::get('type').'%');
+            }
+            $return = $return->where('subject.is_delete', '=', 0)
+            ->orderBy('subject.id', 'desc')
             ->paginate(10);
         
         return $return;
@@ -29,6 +32,6 @@ class SubjectModel extends Model
 
     static public function getSingle($id)
     {
-        return ClassModel::find($id); 
+        return SubjectModel::find($id); 
     }
 }

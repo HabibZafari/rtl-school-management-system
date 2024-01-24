@@ -6,7 +6,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>ویرایش کلاس</h1>
+                        <h1>ویرایش مضمون</h1>
                     </div>
                     <div class="col-sm-6">
                     </div>
@@ -20,15 +20,23 @@
                     <div class="col-md-12">
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title">ویرایش کلاس</h3>
+                                <h3 class="card-title">ویرایش  مضمون</h3>
                             </div>
                             <form role="form" action="" method="POST">
                                 @csrf
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label>اسم کلاس</label>
+                                        <label>اسم مضمون</label>
                                         <input type="text" name="name" class="form-control"
                                          value="{{ $getRecord->name }}" placeholder="اسم را وارد کنید">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>نوعیت</label>
+                                        <select class="form-control" name="type" required>
+                                            <option value="">انتخاب نوعیت</option>
+                                            <option {{ ($getRecord->type == 'تیوری') ? 'selected' : '' }} value="تیوری">تیوری</option>
+                                            <option {{ ($getRecord->type == 'پراکتیک') ? 'selected' : '' }} value="پراکتیک">پراکتیک</option>
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label>حالت</label>

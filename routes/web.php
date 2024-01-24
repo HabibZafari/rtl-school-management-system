@@ -51,11 +51,20 @@ Route::group(['middleware' => 'admin'], function () {
     //subject urls
 
     Route::get('admin/subject/list', [SubjectController::class, 'subjectList']);
-    // Route::get('admin/subject/add', [SubjectController::class, 'subjectAdd']);
-    // Route::post('admin/subject/add', [SubjectController::class, 'subjectInsert']);
-    // Route::get('admin/subject/edit/{id}', [SubjectController::class, 'subjectEdit']);
-    // Route::post('admin/subject/edit/{id}', [SubjectController::class, 'subjectUpdate']);
-    // Route::get('admin/subject/delete/{id}', [SubjectController::class, 'subjectDelete']);
+    Route::get('admin/subject/add', [SubjectController::class, 'subjectAdd']);
+    Route::post('admin/subject/add', [SubjectController::class, 'subjectInsert']);
+    Route::get('admin/subject/edit/{id}', [SubjectController::class, 'subjectEdit']);
+    Route::post('admin/subject/edit/{id}', [SubjectController::class, 'subjectUpdate']);
+    Route::get('admin/subject/delete/{id}', [SubjectController::class, 'subjectDelete']);
+
+    // assign_subject
+
+    Route::get('admin/assign_subject/list', [ClassController::class, 'assignSubjectList']);
+    Route::get('admin/assign_subject/add', [ClassController::class, 'assignSubjectAdd']);
+    Route::post('admin/assign_subject/add', [ClassController::class, 'assignSubjectInsert']);
+    Route::get('admin/assign_subject/edit/{id}', [ClassController::class, 'assignSubjectEdit']);
+    Route::post('admin/assign_subject/edit/{id}', [ClassController::class, 'assignSubjectUpdate']);
+    Route::get('admin/assign_subject/delete/{id}', [ClassController::class, 'assignSubjectDelete']);
     
 });
 Route::group(['middleware' => 'parent'], function () {

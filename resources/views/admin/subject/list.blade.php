@@ -6,11 +6,11 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>لیست کلاس ها</h1>
+                        <h1>لیست مضمون ها</h1>
                     </div>
                     <div class="col-sm-6" style="text-align: left">
-                        <a href="{{ url('admin/class/add') }}" class="btn btn-primary"><i class="fa fa-user-plus"></i> ایجاد
-                            کلاس جدید</a>
+                        <a href="{{ url('admin/subject/add') }}" class="btn btn-primary"><i class="fa fa-user-plus"></i> ایجاد
+                            مضمون جدید</a>
                     </div>
                 </div>
             </div>
@@ -23,9 +23,9 @@
                     <div class="col-md-12">
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title card-primary">جستجوی کلاس</h3>
+                                <h3 class="card-title card-primary">جستجوی مضمون</h3>
                             </div>
-                            <form action="" method="get">
+                            <form action="" method="get" id="searchForm">
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="form-group col-md-3">
@@ -34,9 +34,17 @@
                                                 id="name" class="form-control" placeholder="نام را وارد کنید">
                                         </div>
                                         <div class="form-group col-md-3">
+                                            <label>نوعیت</label>
+                                            <select class="form-control" name="type">
+                                                <option value="">انتخاب نوعیت</option>
+                                                <option {{ (Request::get('type') == 'تیوری') ? 'selected' : '' }} value="تیوری">تیوری</option>
+                                                <option {{ (Request::get('type') == 'پراکتیک') ? 'selected' : '' }} value="پراکتیک">پراکتیک</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-3">
                                             <button type="submit" class="btn btn-info"
                                                 style="margin-top: 33px">جستجو</button>
-                                            <a href="{{ url('admin/class/list') }}" class="btn btn-danger"
+                                            <a href="{{ url('admin/subject/list') }}" class="btn btn-danger"
                                                 style="margin-top: 33px">پاک کردن</a>
                                         </div>
                                     </div>
@@ -46,7 +54,7 @@
 
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title">تعداد کلاس ها: {{ $getRecord->total() }}</h3>
+                                <h3 class="card-title">تعداد مضمون ها: {{ $getRecord->total() }}</h3>
                             </div>
                             <div class="card-body p-0">
                                 <table class="table table-striped">
@@ -54,6 +62,7 @@
                                         <tr>
                                             <th>#</th>
                                             <th>اسم</th>
+                                            <th>نوعیت</th>
                                             <th>حالت</th>
                                             <th>ایجاد کننده</th>
                                             <th>تاریخ ایجاد</th>
@@ -65,6 +74,7 @@
                                             <tr>
                                                 <td>{{ $value->id }}</td>
                                                 <td>{{ $value->name }}</td>
+                                                <td>{{ $value->type }}</td>
                                                 <td @if ($value->status == 1) style="color: green" @else style="color: red"  @endif>
                                                     @if ($value->status == 1)
                                                         فعال
@@ -77,9 +87,9 @@
                                                 <td>{{ $value->created_at ? date('Y/m/d', strtotime($value->created_at)) : '' }}
                                                 </td>
                                                 <td>
-                                                    <a href="{{ url('admin/class/edit/' . $value->id) }}"
+                                                    <a href="{{ url('admin/subject/edit/' . $value->id) }}"
                                                         class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                                                    <a href="{{ url('admin/class/delete/' . $value->id) }}"
+                                                    <a href="{{ url('admin/subject/delete/' . $value->id) }}"
                                                         class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                                 </td>
                                             </tr>
