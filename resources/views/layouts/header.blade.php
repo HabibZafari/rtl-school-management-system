@@ -194,7 +194,7 @@
                               <a href="{{ url('admin/assign_subject/list') }}" class="nav-link @if (Request::segment(2) == 'assign_subject') active @endif">
                                   <i class="nav-icon fa fa-book"></i>
                                   <p>
-                                      مضمون اختصاصی
+                                      رشته اختصاصی
                                   </p>
                               </a>
                           </li>
