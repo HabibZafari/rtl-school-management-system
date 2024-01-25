@@ -29,22 +29,20 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="form-group col-md-3">
-                                            <label for="name">نام</label>
-                                            <input type="text" name="name" value="{{ Request::get('name') }}"
-                                                id="name" class="form-control" placeholder="نام را وارد کنید">
+                                            <label for="class_name">اسم کلاس</label>
+                                            <input type="text" name="class_name" value="{{ Request::get('class_name') }}"
+                                                id="class_name" class="form-control" placeholder="اسم کلاس را وارد کنید">
                                         </div>
                                         <div class="form-group col-md-3">
-                                            <label>نوعیت</label>
-                                            <select class="form-control" name="type">
-                                                <option value="">انتخاب نوعیت</option>
-                                                <option {{ (Request::get('type') == 'تیوری') ? 'selected' : '' }} value="تیوری">تیوری</option>
-                                                <option {{ (Request::get('type') == 'پراکتیک') ? 'selected' : '' }} value="پراکتیک">پراکتیک</option>
-                                            </select>
+                                            <label for="subject_name">اسم کلاس</label>
+                                            <input type="text" name="subject_name" value="{{ Request::get('subject_name') }}"
+                                                id="subject_name" class="form-control" placeholder="اسم رشته را وارد کنید">
                                         </div>
+
                                         <div class="form-group col-md-3">
                                             <button type="submit" class="btn btn-info"
                                                 style="margin-top: 33px">جستجو</button>
-                                            <a href="{{ url('admin/subject/list') }}" class="btn btn-danger"
+                                            <a href="{{ url('admin/assign_subject/list') }}" class="btn btn-danger"
                                                 style="margin-top: 33px">پاک کردن</a>
                                         </div>
                                     </div>
@@ -54,15 +52,15 @@
 
                         <div class="card card-primary">
                             <div class="card-header">
-                                {{-- <h3 class="card-title">تعداد رشته اختصاصی ها: {{ $getRecord->total() }}</h3> --}}
+                                <h3 class="card-title">تعداد رشته اختصاصی ها: {{ $getRecord->total() }}</h3>
                             </div>
                             <div class="card-body p-0">
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>اسم</th>
-                                            <th>نوعیت</th>
+                                            <th>اسم کلاس</th>
+                                            <th>اسم رشته</th>
                                             <th>حالت</th>
                                             <th>ایجاد کننده</th>
                                             <th>تاریخ ایجاد</th>
@@ -73,10 +71,10 @@
                                         @foreach ($getRecord as $value)
                                             <tr>
                                                 <td>{{ $value->id }}</td>
-                                                <td>{{ $value->name }}</td>
-                                                <td>{{ $value->type }}</td>
-                                                <td @if ($value->status == 1) style="color: green" @else style="color: red"  @endif>
-                                                    @if ($value->status == 1)
+                                                <td>{{ $value->class_name }}</td>
+                                                <td>{{ $value->subject_name }}</td>
+                                                <td @if ($value->status == 0) style="color: green" @else style="color: red"  @endif>
+                                                    @if ($value->status == 0)
                                                         فعال
                                                     @else
                                                         غیر فعال
@@ -87,9 +85,9 @@
                                                 <td>{{ $value->created_at ? date('Y/m/d', strtotime($value->created_at)) : '' }}
                                                 </td>
                                                 <td>
-                                                    <a href="{{ url('admin/subject/edit/' . $value->id) }}"
+                                                    <a href="{{ url('admin/assign_subject/edit/'. $value->id) }}"
                                                         class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                                                    <a href="{{ url('admin/subject/delete/' . $value->id) }}"
+                                                    <a href="{{ url('admin/assign_subject/delete/'. $value->id) }}"
                                                         class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                                 </td>
                                             </tr>
@@ -97,7 +95,7 @@
                                     </tbody>
                                 </table>
                                 <div style="padding: 10px">
-                                    {{-- {{ $getRecord->links() }} --}}
+                                    {{ $getRecord->links() }}
                                 </div>
                             </div>
                         </div>

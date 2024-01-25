@@ -25,26 +25,32 @@
                             <form role="form" action="{{ url('admin/assign_subject/add') }}" method="POST">
                                 @csrf
                                 <div class="card-body">
-                                    <div class="form-group">
-                                        <label>اسم</label>
-                                        <input type="name" name="name" value="{{ old('name') }}"
-                                            class="form-control" placeholder="اسم را وارد کنید" required>
-                                    </div>
 
                                     <div class="form-group">
-                                        <label>نوعیت</label>
-                                        <select class="form-control" name="type" required>
-                                            <option value="">انتخاب نوعیت</option>
-                                            <option value="تیوری">تیوری</option>
-                                            <option value="پراکتیک">پراکتیک</option>
+                                        <label>اسم کلاس</label>
+                                        <select class="form-control" name="class_id" required>
+                                            <option value="">انتخاب کلاس</option>
+                                            @foreach ($getClass as $class)
+                                                <option value="{{ $class->id }}">{{ $class->name }}</option>
+                                            @endforeach
                                         </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>اسم مضمون</label>
+                                        @foreach ($getSubject as $subject)
+                                            <div>
+                                                <label style="font-weight: normal;">
+                                                    <input type="checkbox" value="{{ $subject->id }}"
+                                                        name="subject_id[]">{{ $subject->name }}</label>
+                                            </div>
+                                        @endforeach
                                     </div>
 
                                     <div class="form-group">
                                         <label>حالت</label>
                                         <select class="form-control" name="status">
-                                            <option value="1">فعال</option>
-                                            <option value="0">غیر فعال</option>
+                                            <option value="0">فعال</option>
+                                            <option value="1">غیر فعال</option>
                                         </select>
                                     </div>
                                 </div>
