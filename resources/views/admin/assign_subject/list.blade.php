@@ -87,6 +87,11 @@
                                                 <td>
                                                     <a href="{{ url('admin/assign_subject/edit/'. $value->id) }}"
                                                         class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                                                    <a href="{{ url('admin/assign_subject/edit_single/'. $value->id) }}"
+                                                        class="btn btn-info">
+                                                        Edit Single
+                                                        {{-- <i class="fa fa-edit"></i> --}}
+                                                    </a>
                                                     <a href="{{ url('admin/assign_subject/delete/'. $value->id) }}"
                                                         class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                                 </td>

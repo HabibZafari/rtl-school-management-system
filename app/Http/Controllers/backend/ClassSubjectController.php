@@ -88,6 +88,37 @@ class ClassSubjectController extends Controller
         }
         return redirect('admin/assign_subject/list')->with('success', 'اطلاعات با موفقیت ثبت شد');
     }
+    public function assignSubjectEditSingle($id)
+    {
+
+        $getRecord = ClassSubjectModel::getSingle($id);
+        if (!empty($getRecord)) {
+            $data['getRecord'] = $getRecord;
+            $data['getClass'] = ClassModel::getClass();
+            $data['getSubject'] = SubjectModel::getSubject();
+            $data['header_title'] = 'ویرایش رشته اختصاصی';
+            return view('admin.assign_subject.edit_single', $data);
+        } else {
+            abort(404);
+        }
+    }
+
+    public function assignSubjectUpdateSingle(Request $request, $id)
+    {
+        $getAlreadyFirst = ClassSubjectModel::getAlreadyFirst($request->class_id, $request->subject_id);
+        if (!empty($getAlreadyFirst)) {
+            $getAlreadyFirst->status = $request->status;
+            $getAlreadyFirst->save();
+            return redirect('admin/assign_subject/list')->with('success', 'اطلاعات با موفقیت ویرایش شد');
+        } else {
+            $save = ClassSubjectModel::getSingle($id);
+            $save->class_id = $request->class_id;
+            $save->subject_id = $request->subject_id;
+            $save->status = $request->status;
+            $save->update();
+            return redirect('admin/assign_subject/list')->with('success', 'اطلاعات با موفقیت ویرایش شد');
+        }
+    }
 
     public function assignSubjectDelete($id)
     {
