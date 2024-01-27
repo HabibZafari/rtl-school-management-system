@@ -40,7 +40,7 @@
                                         <select class="form-control" name="subject_id" required>
                                             <option value="">انتخاب رشته</option>
                                             @foreach ($getSubject as $subject)
-                                                <option {{ $getRecord->subject_id == $subject->id ? 'selected' : '' }}
+                                                <option {{ ($getRecord->subject_id == $subject->id) ? 'selected' : '' }}
                                                     value="{{ $subject->id }}">{{ $subject->name }}</option>
                                             @endforeach
                                         </select>

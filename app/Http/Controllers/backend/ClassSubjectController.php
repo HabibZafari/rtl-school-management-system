@@ -103,7 +103,7 @@ class ClassSubjectController extends Controller
         }
     }
 
-    public function assignSubjectUpdateSingle(Request $request, $id)
+    public function assignSubjectUpdateSingle($id,Request $request)
     {
         $getAlreadyFirst = ClassSubjectModel::getAlreadyFirst($request->class_id, $request->subject_id);
         if (!empty($getAlreadyFirst)) {
@@ -112,10 +112,11 @@ class ClassSubjectController extends Controller
             return redirect('admin/assign_subject/list')->with('success', 'اطلاعات با موفقیت ویرایش شد');
         } else {
             $save = ClassSubjectModel::getSingle($id);
+            // dd($save);
             $save->class_id = $request->class_id;
             $save->subject_id = $request->subject_id;
             $save->status = $request->status;
-            $save->update();
+            $save->save();
             return redirect('admin/assign_subject/list')->with('success', 'اطلاعات با موفقیت ویرایش شد');
         }
     }

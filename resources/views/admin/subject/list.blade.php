@@ -75,8 +75,8 @@
                                                 <td>{{ $value->id }}</td>
                                                 <td>{{ $value->name }}</td>
                                                 <td>{{ $value->type }}</td>
-                                                <td @if ($value->status == 1) style="color: green" @else style="color: red"  @endif>
-                                                    @if ($value->status == 1)
+                                                <td @if ($value->status == 0) style="color: green" @else style="color: red"  @endif>
+                                                    @if ($value->status == 0)
                                                         فعال
                                                     @else
                                                         غیر فعال

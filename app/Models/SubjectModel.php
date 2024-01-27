@@ -40,7 +40,7 @@ class SubjectModel extends Model
         $return =  SubjectModel::select('subject.*')
             ->join('users', 'users.id', 'subject.created_by')
             ->where('subject.is_delete', '=', 0)
-            ->where('subject.status', '=', 0)
+            ->where('subject.status', '=', 1)
             ->orderBy('subject.name', 'asc')
             ->get();
 

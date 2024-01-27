@@ -39,11 +39,11 @@ class ClassSubjectModel extends Model
 
     static public function getSingle($id)
     {
-        return ClassSubjectModel::find($id); 
+        return self::find($id); 
     }
 
     static public function getAssignSubjectID($class_id){
-        return ClassSubjectModel::where('class_id', '=', $class_id)->where('is_delete', '=', 0)->get();
+        return self::where('class_id', '=', $class_id)->where('is_delete', '=', 0)->get();
         // ->pluck('subject_id')->toArray();
     }
 

@@ -198,6 +198,14 @@
                                   </p>
                               </a>
                           </li>
+                          <li class="nav-item">
+                              <a href="{{ url('admin/change_password/list') }}" class="nav-link @if (Request::segment(2) == 'change_password') active @endif">
+                                  <i class="nav-icon fa fa-book"></i>
+                                  <p>
+                                    تغییر رمز کاربر
+                                  </p>
+                              </a>
+                          </li>
                       @elseif (Auth::user()->user_type == 2)
                           <li class="nav-item">
                               <a href="{{ url('teacher/dashboard') }}" class="nav-link @if (Request::segment(2) == 'dashboard') active @endif">
