@@ -155,7 +155,7 @@
               <nav class="mt-2">
                   <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                       data-accordion="false">
-
+                    {{-- Admin --}}
                       @if (Auth::user()->user_type == 1)
                           <li class="nav-item">
                               <a href="{{ url('admin/dashboard') }}" class="nav-link @if (Request::segment(2) == 'dashboard') active @endif">
@@ -199,13 +199,15 @@
                               </a>
                           </li>
                           <li class="nav-item">
-                              <a href="{{ url('admin/change_password/list') }}" class="nav-link @if (Request::segment(2) == 'change_password') active @endif">
+                              <a href="{{ url('admin/change_password') }}" class="nav-link @if (Request::segment(2) == 'change_password') active @endif">
                                   <i class="nav-icon fa fa-book"></i>
                                   <p>
                                     تغییر رمز کاربر
                                   </p>
                               </a>
                           </li>
+
+                          {{-- Teachers --}}
                       @elseif (Auth::user()->user_type == 2)
                           <li class="nav-item">
                               <a href="{{ url('teacher/dashboard') }}" class="nav-link @if (Request::segment(2) == 'dashboard') active @endif">
@@ -215,6 +217,15 @@
                                   </p>
                               </a>
                           </li>
+                          <li class="nav-item">
+                            <a href="{{ url('teacher/change_password') }}" class="nav-link @if (Request::segment(2) == 'change_password') active @endif">
+                                <i class="nav-icon fa fa-book"></i>
+                                <p>
+                                  تغییر رمز کاربر
+                                </p>
+                            </a>
+                        </li>
+                        {{-- Students --}}
                       @elseif (Auth::user()->user_type == 3)
                           <li class="nav-item">
                               <a href="{{ url('student/dashboard') }}" class="nav-link @if (Request::segment(2) == 'dashboard') active @endif">
@@ -224,6 +235,15 @@
                                   </p>
                               </a>
                           </li>
+                          <li class="nav-item">
+                            <a href="{{ url('student/change_password') }}" class="nav-link @if (Request::segment(2) == 'change_password') active @endif">
+                                <i class="nav-icon fa fa-book"></i>
+                                <p>
+                                  تغییر رمز کاربر
+                                </p>
+                            </a>
+                        </li>
+                        {{-- Parents --}}
                       @elseif (Auth::user()->user_type == 4)
                           <li class="nav-item">
                               <a href="{{ url('parent/dashboard') }}" class="nav-link @if (Request::segment(2) == 'dashboard') active @endif">
@@ -233,6 +253,14 @@
                                   </p>
                               </a>
                           </li>
+                          <li class="nav-item">
+                            <a href="{{ url('parent/change_password') }}" class="nav-link @if (Request::segment(2) == 'change_password') active @endif">
+                                <i class="nav-icon fa fa-book"></i>
+                                <p>
+                                  تغییر رمز کاربر
+                                </p>
+                            </a>
+                        </li>
                       @endif
 
 
