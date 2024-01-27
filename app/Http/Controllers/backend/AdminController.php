@@ -37,7 +37,7 @@ class AdminController extends Controller
         $user->password = Hash::make($request->password);
         $user->user_type = 1;
         $user->save();
-        return redirect('/admin/admin/list')->with('success', 'Admin added successfully');
+        return redirect('/admin/admin/list')->with('success', 'ادمین با موفقیت اضافه شد');
     }
 
     public function edit($id)
