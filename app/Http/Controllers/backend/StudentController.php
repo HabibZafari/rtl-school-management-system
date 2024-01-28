@@ -54,7 +54,7 @@ class StudentController extends Controller
         if (!empty($request->file('profile_pic'))) {
             $ext = $request->file('profile_pic')->getClientOriginalExtension();
             $file = $request->file('profile_pic');
-            $randomStr = date('Ymdhis').Str::random(20);
+            $randomStr = date('Ymdhis') . Str::random(20);
             $fileName = strtolower($randomStr) . '.' . $ext;
             // $file->move(public_path('uploads'), $fileName);
             $file->move('upload/profile/', $fileName);
@@ -84,7 +84,7 @@ class StudentController extends Controller
             $data['getClass'] = ClassModel::getClass();
             $data['header_title'] = "ویرایش اطلاعات شاگرد";
             return view('admin.student.edit', $data);
-        } else{
+        } else {
             abort(404);
         }
     }
@@ -114,12 +114,12 @@ class StudentController extends Controller
             $student->date_of_birth = trim($request->date_of_birth);
         }
         if (!empty($request->file('profile_pic'))) {
-            if(!empty($student->getProfile())){
-                unlink('upload/profile/'.$student->profile_pic);
+            if (!empty($student->getProfile())) {
+                unlink('upload/profile/' . $student->profile_pic);
             }
             $ext = $request->file('profile_pic')->getClientOriginalExtension();
             $file = $request->file('profile_pic');
-            $randomStr = date('Ymdhis').Str::random(20);
+            $randomStr = date('Ymdhis') . Str::random(20);
             $fileName = strtolower($randomStr) . '.' . $ext;
             $file->move('upload/profile/', $fileName);
             $student->profile_pic = $fileName;
@@ -140,5 +140,19 @@ class StudentController extends Controller
         }
         $student->save();
         return redirect('admin/student/list')->with('success', 'اطلاعات با موفقیت  ویرایش شد');
+    }
+
+    public function delete($id)
+    {
+        $getRecord = User::getSingle($id);
+        if (!empty($getRecord->getProfile())) {
+            unlink('upload/profile/' . $getRecord->profile_pic);
+        }
+        if (!empty($getRecord)) {
+            $getRecord->is_delete = 1;
+            $getRecord->save();
+        }
+
+        return redirect('admin/student/list')->with('success', 'اطلاعات با موفقیت حذف شد');
     }
 }

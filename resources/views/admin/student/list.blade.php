@@ -21,19 +21,29 @@
                 <div class="row">
 
                     <div class="col-md-12">
-                        {{-- <div class="card card-primary">
+                        <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title card-primary">جستجوی شاگرد</h3>
+                                <h3 class="card-title card-primary">جستجوی اطلاعات شاگرد</h3>
                             </div>
                             <form action="" method="get">
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="form-group col-md-3">
+                                        <div class="form-group col-md-2">
                                             <label for="name">نام</label>
                                             <input type="text" name="name" value="{{ Request::get('name') }}" id="name" class="form-control"
                                                 placeholder="نام را وارد کنید">
                                         </div>
-                                        <div class="form-group col-md-3">
+                                        <div class="form-group col-md-2">
+                                            <label for="roll_number">شماره ثبت</label>
+                                            <input type="text" name="roll_number" value="{{ Request::get('roll_number') }}" id="roll_number" class="form-control"
+                                                placeholder="شماره ثبت را وارد کنید">
+                                        </div>
+                                        <div class="form-group col-md-2">
+                                            <label for="admission_number">شماره پذیرش </label>
+                                            <input type="text" name="admission_number" value="{{ Request::get('admission_number') }}" id="admission_number" class="form-control"
+                                                placeholder="شماره پذیرش را وارد کنید">
+                                        </div>
+                                        <div class="form-group col-md-2">
                                             <label for="email">ایمیل</label>
                                             <input type="email" name="email" value="{{ Request::get('email') }}" id="email" class="form-control"
                                                 placeholder="ایمیل را وارد کنید">
@@ -44,7 +54,7 @@
                                         </div>
                                     </div>
                             </form>
-                        </div> --}}
+                        </div>
                         @include('_message')
 
                         <div class="card card-primary">
@@ -58,8 +68,11 @@
                                         <tr>
                                             <th>#</th>
                                             <th>اسم</th>
-                                            <th>ایمیل</th>
+                                            <th>شماره پذیرش</th>
+                                            <th>شماره ثبت</th>
+                                            <th>کلاس</th>
                                             <th>تاریخ ایجاد</th>
+                                            <th>عکس شاگرد</th>
                                             <th>تنظیمات</th>
                                         </tr>
                                     </thead>
@@ -68,9 +81,15 @@
                                             <tr>
                                                 <td>{{ $value->id }}</td>
                                                 <td>{{ $value->name }}</td>
-                                                <td>{{ $value->email }}</td>
+                                                <td>{{ $value->admission_number }}</td>
+                                                <td>{{ $value->roll_number }}</td>
+                                                <td>{{ $value->class_name }}</td>
                                                 <td>{{ $value->created_at ? date('Y/m/d', strtotime($value->created_at)) : ''}}</td>
-                                                {{-- <td>{{ $value->created_at ? Illuminate\Support\Facades\Date::parse($value->created_at)->diffForHumans() : '' }}</td> --}}
+                                                @if (!empty($value->getProfile()))
+                                                    <td><img src="{{ $value->getProfile() }}" style="width: 50px; height: 50px; border-radius: 50%;" alt="no image"></td>
+                                                @else
+                                                    <td><img style="width: 50px; height: 50px; border-radius: 50%;" alt="no image"></td>
+                                                @endif
                                                 <td>
                                                     <a href="{{ url('admin/student/edit/' . $value->id) }}"
                                                         class="btn btn-primary"><i class="fa fa-edit"></i></a>
