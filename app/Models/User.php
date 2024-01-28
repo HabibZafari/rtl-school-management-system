@@ -87,4 +87,14 @@ class User extends Authenticatable
     static public function getSingle($id){
         return self::find($id);
     }
+
+    public function getProfile(){
+        $filePath = public_path('upload/profile/' . $this->profile_pic);
+
+        if (!empty($this->profile_pic) && file_exists($filePath)) {
+            return url('upload/profile/' . $this->profile_pic);
+        }
+    
+        return null;
+    }
 }
