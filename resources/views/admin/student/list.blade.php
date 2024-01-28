@@ -1,32 +1,29 @@
 @extends('layouts.app')
 
 @section('content')
-    <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>لیست ادمین ها</h1>
+                        <h1>لیست شاگردان</h1>
                     </div>
                     <div class="col-sm-6" style="text-align: left">
-                        <a href="{{ url('admin/admin/add') }}" class="btn btn-primary"><i class="fa fa-user-plus"></i> ایجاد
-                            ادمین جدید</a>
+                        <a href="{{ url('admin/student/add') }}" class="btn btn-primary"><i class="fa fa-user-plus"></i> ایجاد
+                            شاگرد جدید</a>
                     </div>
                 </div>
-            </div><!-- /.container-fluid -->
+            </div>
         </section>
 
-        <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
 
                     <div class="col-md-12">
-                        <div class="card card-primary">
+                        {{-- <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title card-primary">جستجوی ادمین</h3>
+                                <h3 class="card-title card-primary">جستجوی شاگرد</h3>
                             </div>
                             <form action="" method="get">
                                 <div class="card-body">
@@ -47,12 +44,12 @@
                                         </div>
                                     </div>
                             </form>
-                        </div>
+                        </div> --}}
                         @include('_message')
 
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title">تعداد ادمین ها: {{ $getRecord->total() }}</h3>
+                                <h3 class="card-title">تعداد شاگردان: {{ $getRecord->total() }}</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body p-0">
@@ -75,9 +72,9 @@
                                                 <td>{{ $value->created_at ? date('Y/m/d', strtotime($value->created_at)) : ''}}</td>
                                                 {{-- <td>{{ $value->created_at ? Illuminate\Support\Facades\Date::parse($value->created_at)->diffForHumans() : '' }}</td> --}}
                                                 <td>
-                                                    <a href="{{ url('admin/admin/edit/' . $value->id) }}"
+                                                    <a href="{{ url('admin/student/edit/' . $value->id) }}"
                                                         class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                                                    <a href="{{ url('admin/admin/delete/' . $value->id) }}"
+                                                    <a href="{{ url('admin/student/delete/' . $value->id) }}"
                                                         class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                                 </td>
                                             </tr>
@@ -88,16 +85,10 @@
                                     {{ $getRecord->links() }}
                                 </div>
                             </div>
-                            <!-- /.card-body -->
                         </div>
-                        <!-- /.card -->
                     </div>
-                    <!-- /.col -->
                 </div>
-                <!-- /.row -->
-            </div><!-- /.container-fluid -->
+            </div>
         </section>
-        <!-- /.content -->
     </div>
-    <!-- /.content-wrapper -->
 @endsection

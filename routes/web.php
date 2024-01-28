@@ -5,9 +5,9 @@ use App\Http\Controllers\backend\AuthController;
 use App\Http\Controllers\backend\ClassController;
 use App\Http\Controllers\backend\ClassSubjectController;
 use App\Http\Controllers\backend\DashboardController;
+use App\Http\Controllers\backend\StudentController;
 use App\Http\Controllers\backend\SubjectController;
 use App\Http\Controllers\backend\UserController;
-use App\Http\Controllers\bakcend\StudentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,7 +47,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/student/list', [StudentController::class, 'list']);
     Route::get('admin/student/add', [StudentController::class, 'add']);
     Route::post('admin/student/add', [StudentController::class, 'insert']);
-    
+
     //class urls
 
     Route::get('admin/class/list', [ClassController::class, 'classList']);
