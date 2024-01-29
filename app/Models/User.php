@@ -69,6 +69,22 @@ class User extends Authenticatable
         return $return;
     }
 
+    static public function getParent()
+    {
+        $return =  self::select('users.*')
+            ->where('user_type', '=', 4)
+            ->where('is_delete', '=', 0);
+            if (!empty(Request::get('name'))) {
+                $return = $return->where('name', 'like', '%'.Request::get('name').'%');
+            } 
+            // if(!empty(Request::get('email'))){ 
+            //     $return = $return->where('email', 'like', '%'.Request::get('email').'%');
+            // }
+            
+        $return =  $return->orderBy('id', 'desc')->paginate(3);
+        return $return;
+    }
+
     static public function getStudent()
     {
         $return =  self::select('users.*', 'class.name as class_name')
@@ -92,6 +108,8 @@ class User extends Authenticatable
         return $return;
     }
 
+
+
     static public function getSingle($id){
         return self::find($id);
     }
@@ -105,4 +123,6 @@ class User extends Authenticatable
     
         return null;
     }
+
+
 }
