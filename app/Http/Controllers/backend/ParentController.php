@@ -124,4 +124,27 @@ class ParentController extends Controller
         return redirect('admin/student/list')->with('success', 'اطلاعات با موفقیت حذف شد');
     }
 
+    public function myStudent($id){
+        $data['getParent'] = User::getSingle($id);
+        $data['parent_id'] = $id;
+        $data['getSearchStudent'] = User::getSearchStudent();
+        $data['getRecord'] = User::getMyStudent($id);
+        $data['header_title'] = "لیست شاگردان والدین";
+        return view('admin.parent.my_student', $data);
+    }
+
+    public function AssignStudentParent($student_id, $parent_id){
+        $student = User::getSingle($student_id);
+        $student->parent_id = $parent_id;
+        $student->save();
+        return redirect()->back()->with('success', 'اطلاعات شاگرد برای والد ثبت شد');
+    }
+
+    public function AssignStudentParentDelete($student_id){
+        $student = User::getSingle($student_id);
+        $student->parent_id = null;
+        $student->save();
+        return redirect('admin/parent/list')->with('success', 'اطلاعات شاگرد برای والد حذف شد');
+    }
+
 }

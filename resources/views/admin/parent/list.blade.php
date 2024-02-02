@@ -99,6 +99,8 @@
                                                         class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
                                                     <a href="{{ url('admin/parent/delete/' . $value->id) }}"
                                                         class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                                                    <a href="{{ url('admin/parent/my-student/' . $value->id) }}"
+                                                        class="btn btn-danger btn-sm">My Student</a>
                                                 </td>
                                             </tr>
                                         @endforeach

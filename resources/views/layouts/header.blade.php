@@ -284,8 +284,8 @@
                       <li class="nav-item">
                           <a href="{{ route('admin.logout') }}" class="nav-link"
                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                              <i class="nav-icon fa fa-sign-out"></i>
-                              <p>
+                              <i style="color: red;" class="nav-icon fa fa-sign-out"></i>
+                              <p style="color: red;">
                                   خروج
                               </p>
                           </a>

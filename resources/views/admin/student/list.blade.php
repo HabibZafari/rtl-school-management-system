@@ -67,7 +67,8 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>اسم</th>
+                                            <th>اسم دانش آموز</th>
+                                            <th>اسم والدین</th>
                                             <th>شماره پذیرش</th>
                                             <th>شماره ثبت</th>
                                             <th>کلاس</th>
@@ -81,6 +82,7 @@
                                             <tr>
                                                 <td>{{ $value->id }}</td>
                                                 <td>{{ $value->name }}</td>
+                                                <td>{{ $value->parent_name }}</td>
                                                 <td>{{ $value->admission_number }}</td>
                                                 <td>{{ $value->roll_number }}</td>
                                                 <td>{{ $value->class_name }}</td>

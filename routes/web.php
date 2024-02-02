@@ -52,7 +52,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('admin/student/edit/{id}', [StudentController::class, 'update']);
     Route::get('admin/student/delete/{id}', [StudentController::class, 'delete']);
     /////////////////////////////////////////////////////////////////////////
-    
+
     //parent
 
     Route::get('admin/parent/list', [ParentController::class, 'list']);
@@ -61,6 +61,10 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/parent/edit/{id}', [ParentController::class, 'edit']);
     Route::post('admin/parent/edit/{id}', [ParentController::class, 'update']);
     Route::get('admin/parent/delete/{id}', [ParentController::class, 'delete']);
+    Route::get('admin/parent/my-student/{id}', [ParentController::class, 'myStudent']);
+    Route::get('admin/parent/assign_student_parent/{student_id}/{parent_id}', [ParentController::class, 'AssignStudentParent']);
+    Route::get('admin/parent/assign_student_parent_delete/{student_id}', [ParentController::class, 'AssignStudentParentDelete']);
+    
     ////////////////////////////////
     
     //class urls
