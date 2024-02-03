@@ -8,6 +8,7 @@ use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\backend\ParentController;
 use App\Http\Controllers\backend\StudentController;
 use App\Http\Controllers\backend\SubjectController;
+use App\Http\Controllers\backend\TeacherController;
 use App\Http\Controllers\backend\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -66,7 +67,16 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/parent/assign_student_parent_delete/{student_id}', [ParentController::class, 'AssignStudentParentDelete']);
     
     ////////////////////////////////
-    
+    //teacher
+
+    Route::get('admin/teacher/list', [TeacherController::class, 'list']);
+    Route::get('admin/teacher/add', [TeacherController::class, 'add']);
+    Route::post('admin/teacher/add', [TeacherController::class, 'insert']);
+    Route::get('admin/teacher/edit/{id}', [TeacherController::class, 'edit']);
+    Route::post('admin/teacher/edit/{id}', [TeacherController::class, 'update']);
+    Route::get('admin/teacher/delete/{id}', [TeacherController::class, 'delete']);
+
+
     //class urls
 
     Route::get('admin/class/list', [ClassController::class, 'classList']);

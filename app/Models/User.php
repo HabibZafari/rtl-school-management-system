@@ -110,6 +110,20 @@ class User extends Authenticatable
         return $return;
     }
 
+    static public function getTeacher(){
+        $return =  self::select('users.*')
+            ->where('users.user_type', '=', 2)
+            ->where('users.is_delete', '=', 0);
+        if (!empty(Request::get('name'))) {
+            $return = $return->where('users.name', 'like', '%' . Request::get('name') . '%');
+        }
+        if (!empty(Request::get('email'))) {
+            $return = $return->where('users.email', 'like', '%' . Request::get('email') . '%');
+        }
+        $return =  $return->orderBy('users.id', 'desc')->paginate(3);
+        return $return;
+    }
+    
     static public function getSearchStudent()
     {
         if (!empty(Request::get('id')) || !empty(Request::get('name')) || !empty(Request::get('roll_number'))) {
