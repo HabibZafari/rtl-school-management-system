@@ -268,6 +268,14 @@
                               </a>
                           </li>
                           <li class="nav-item">
+                            <a href="{{ url('student/account') }}" class="nav-link @if (Request::segment(2) == 'account') active @endif">
+                                <i class="nav-icon fa fa-book"></i>
+                                <p>
+                                  حساب کاربری
+                                </p>
+                            </a>
+                        </li>
+                          <li class="nav-item">
                             <a href="{{ url('student/change_password') }}" class="nav-link @if (Request::segment(2) == 'change_password') active @endif">
                                 <i class="nav-icon fa fa-book"></i>
                                 <p>
@@ -285,6 +293,14 @@
                                   </p>
                               </a>
                           </li>
+                          <li class="nav-item">
+                            <a href="{{ url('parent/account') }}" class="nav-link @if (Request::segment(2) == 'account') active @endif">
+                                <i class="nav-icon fa fa-book"></i>
+                                <p>
+                                  حساب کاربری
+                                </p>
+                            </a>
+                        </li>
                           <li class="nav-item">
                             <a href="{{ url('parent/change_password') }}" class="nav-link @if (Request::segment(2) == 'change_password') active @endif">
                                 <i class="nav-icon fa fa-book"></i>
