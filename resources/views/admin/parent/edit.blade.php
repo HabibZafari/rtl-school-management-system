@@ -22,7 +22,7 @@
                             <div class="card-header">
                                 <h3 class="card-title"> ویرایش اطلاعات والد</h3>
                             </div>
-                            <form role="form" action="{{ url('admin/student/edit/' . $getRecord->id) }}"
+                            <form role="form" action=""
                                 enctype="multipart/form-data" method="POST">
                                 @csrf
                                 <div class="card-body">

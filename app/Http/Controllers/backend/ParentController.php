@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ParentController extends Controller
 {
@@ -107,7 +108,7 @@ class ParentController extends Controller
             $student->password = Hash::make($request->password);
         }
         $student->save();
-        return redirect('admin/parent/list')->with('success', 'اطلاعات با موفقیت  ویرایش شد');
+        return redirect()->back()->with('success', 'اطلاعات با موفقیت  ویرایش شد');
     }
 
     public function delete($id)
@@ -145,6 +146,13 @@ class ParentController extends Controller
         $student->parent_id = null;
         $student->save();
         return redirect('admin/parent/list')->with('success', 'اطلاعات شاگرد برای والد حذف شد');
+    }
+
+    public function myStudentParent(){
+        $id = Auth::user()->id;
+        $data['getRecord'] = User::getMyStudent($id);
+        $data['header_title'] = "لیست شاگردان من";
+        return view('parent.my_student', $data);
     }
 
 }

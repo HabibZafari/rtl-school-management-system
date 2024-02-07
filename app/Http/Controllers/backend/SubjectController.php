@@ -62,4 +62,9 @@ class SubjectController extends Controller
         $save->save();
         return redirect()->back()->with('success', 'اطلاعات با موفقیت حذف شد');
     }
+    public function MySubject(){
+        $data['getRecord'] = ClassSubjectModel::MySubject(Auth::user()->class_id);
+        $data['header_title'] = "لیست مضامین";
+        return view('student.my_subject', $data);
+    }
 }

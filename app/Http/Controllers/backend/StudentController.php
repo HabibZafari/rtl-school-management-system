@@ -4,8 +4,11 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\ClassModel;
+use App\Models\ClassSubjectModel;
+use App\Models\SubjectModel;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
@@ -155,4 +158,5 @@ class StudentController extends Controller
 
         return redirect('admin/student/list')->with('success', 'اطلاعات با موفقیت حذف شد');
     }
+
 }
