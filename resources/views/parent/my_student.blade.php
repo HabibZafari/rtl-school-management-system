@@ -32,6 +32,7 @@
                                             <th>اسم دانش آموز</th>
                                             <th>ایمیل</th>
                                             <th>اسم والدین</th>
+                                            <th>تنظیمات</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -49,6 +50,9 @@
                                             <td>{{ $value->name }} {{ $value->last_name }}</td>
                                             <td>{{$value->email}}</td>
                                             <td>{{$value->parent_name}}</td>
+                                            <td>
+                                                <a href="{{ url('parent/my_student/subject/'.$value->id) }}" class="btn btn-primary">مضمون</a>
+                                            </td>
                                             
                                         </tr>
                                     @endforeach

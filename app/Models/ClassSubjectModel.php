@@ -34,7 +34,7 @@ class ClassSubjectModel extends Model
 
     static public function MySubject($class_id)
     {
-        $return =  ClassSubjectModel::select('class_subject.*',
+        return self::select('class_subject.*',
         'subject.name as subject_name', 'subject.type as subject_type')
             ->join('subject', 'subject.id', '=', 'class_subject.subject_id')
             ->join('class', 'class.id', '=', 'class_subject.class_id')
@@ -44,7 +44,6 @@ class ClassSubjectModel extends Model
             ->where('class_subject.status', '=', 0)
             ->orderBy('class_subject.id', 'desc')
             ->get();
-        return $return;
     }
     static public function getAlreadyFirst($class_id, $subject_id)
     {

@@ -123,6 +123,8 @@ Route::group(['middleware' => 'parent'], function () {
     Route::get('parent/account', [UserController::class, 'MyParentAccount']);
     Route::post('parent/account', [UserController::class, 'UpdateMyParentAccount']);
     Route::get('parent/my_student', [ParentController::class, 'myStudentParent']);
+    Route::get('parent/my_student/subject/{student_id}', [SubjectController::class, 'ParentStudentSubject']);
+    
 });
 
 Route::group(['middleware' => 'teacher'], function () {
@@ -138,6 +140,8 @@ Route::group(['middleware' => 'student'], function () {
     Route::post('student/change_password', [UserController::class, 'update_change_password']);
     Route::get('student/account', [UserController::class, 'MyStudentAccount']);
     Route::post('student/account', [UserController::class, 'UpdateMyStudentAccount']);
-    // Route::get('student/my_class', [StudentController::class, 'myClassStudent']);
     Route::get('student/my_subject', [SubjectController::class, 'MySubject']);
+    // Route::get('student/my_class', [StudentController::class, 'myClassStudent']);
+    
+
 });

@@ -43,8 +43,8 @@
                                     <div class="form-group">
                                         <label>حالت</label>
                                         <select class="form-control" name="status">
-                                            <option value="1">فعال</option>
-                                            <option value="0">غیر فعال</option>
+                                            <option value="0">فعال</option>
+                                            <option value="1">غیر فعال</option>
                                         </select>
                                     </div>
                                 </div>

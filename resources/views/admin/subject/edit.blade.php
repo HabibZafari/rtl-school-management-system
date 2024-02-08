@@ -41,8 +41,8 @@
                                     <div class="form-group">
                                         <label>حالت</label>
                                         <select class="form-control" name="status">
-                                            <option {{ ($getRecord->status == 1) ? 'selected' : '' }} value="1">فعال</option>
-                                            <option {{ ($getRecord->status == 0) ? 'selected' : '' }} value="0">غیر فعال</option>
+                                            <option {{ ($getRecord->status == 0) ? 'selected' : '' }} value="0">فعال</option>
+                                            <option {{ ($getRecord->status == 1) ? 'selected' : '' }} value="1">غیر فعال</option>
                                         </select>
                                     </div>
                                 </div>
