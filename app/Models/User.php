@@ -123,6 +123,19 @@ class User extends Authenticatable
         $return =  $return->orderBy('users.id', 'desc')->paginate(3);
         return $return;
     }
+    static public function getTeacherClass(){
+        $return =  self::select('users.*')
+            ->where('users.user_type', '=', 2)
+            ->where('users.is_delete', '=', 0);
+        // if (!empty(Request::get('name'))) {
+        //     $return = $return->where('users.name', 'like', '%' . Request::get('name') . '%');
+        // }
+        // if (!empty(Request::get('email'))) {
+        //     $return = $return->where('users.email', 'like', '%' . Request::get('email') . '%');
+        // }
+        $return =  $return->orderBy('users.id', 'desc')->get();
+        return $return;
+    }
     
     static public function getSearchStudent()
     {

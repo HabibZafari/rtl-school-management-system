@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\backend\AdminController;
+use App\Http\Controllers\backend\AssignClassTeacherController;
 use App\Http\Controllers\backend\AuthController;
 use App\Http\Controllers\backend\ClassController;
 use App\Http\Controllers\backend\ClassSubjectController;
@@ -105,6 +106,17 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/assign_subject/edit_single/{id}', [ClassSubjectController::class, 'assignSubjectEditSingle']);
     Route::post('admin/assign_subject/edit_single/{id}', [ClassSubjectController::class, 'assignSubjectUpdateSingle']);
     Route::get('admin/assign_subject/delete/{id}', [ClassSubjectController::class, 'assignSubjectDelete']);
+
+    //assign_class_teacher
+
+    Route::get('admin/assign_class_teacher/list', [AssignClassTeacherController::class, 'list']);
+    Route::get('admin/assign_class_teacher/add', [AssignClassTeacherController::class, 'add']);
+    Route::post('admin/assign_class_teacher/add', [AssignClassTeacherController::class, 'insert']);
+    Route::get('admin/assign_class_teacher/edit/{id}', [AssignClassTeacherController::class, 'edit']);
+    Route::post('admin/assign_class_teacher/edit/{id}', [AssignClassTeacherController::class, 'update']);
+    Route::get('admin/assign_class_teacher/edit_single/{id}', [AssignClassTeacherController::class, 'edit_single']);
+    Route::post('admin/assign_class_teacher/edit_single/{id}', [AssignClassTeacherController::class, 'update_single']);
+    Route::get('admin/assign_class_teacher/delete/{id}', [AssignClassTeacherController::class, 'delete']);
 
     // Change password
 
