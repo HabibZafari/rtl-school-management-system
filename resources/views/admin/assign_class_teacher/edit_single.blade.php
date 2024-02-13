@@ -30,14 +30,14 @@
                                         <select class="form-control" name="class_id" required>
                                             <option value="">انتخاب کلاس</option>
                                             @foreach ($getClass as $class)
-                                                <option {{ $getRecord->class_id == $class->id ? 'selected' : '' }}
+                                                <option {{ ($getRecord->class_id == $class->id) ? 'selected' : '' }}
                                                     value="{{ $class->id }}">{{ $class->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label>اسم رشته</label>
-                                        <select class="form-control" name="subject_id" required>
+                                        <select class="form-control" name="teacher_id" required>
                                             <option value="">انتخاب رشته</option>
                                             @foreach ($getTeacher as $teacher)
                                                 <option {{ ($getRecord->teacher_id == $teacher->id) ? 'selected' : '' }}

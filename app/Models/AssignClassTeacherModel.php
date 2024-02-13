@@ -23,6 +23,12 @@ class AssignClassTeacherModel extends Model
             ->join('users as teacher', 'teacher.id', '=', 'assign_class_teacher.teacher_id')
             ->join('class', 'class.id', '=', 'assign_class_teacher.class_id')
             ->join('users', 'users.id', '=', 'assign_class_teacher.created_by');
+            if (!empty(Request::get('class_name'))) {
+                $return = $return->where('class.name', 'like', '%' . Request::get('class_name') . '%');
+            }
+            if (!empty(Request::get('teacher_name'))) {
+                $return = $return->where('teacher.name', 'like', '%' . Request::get('teacher_name') . '%');
+            }
         $return =  $return->where('assign_class_teacher.is_delete', '=', 0)
             ->orderBy('assign_class_teacher.id', 'desc')
             ->paginate(10);

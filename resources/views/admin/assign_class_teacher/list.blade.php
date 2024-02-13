@@ -21,6 +21,33 @@
                 <div class="row">
 
                     <div class="col-md-12">
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title card-primary">جستجوی رشته اختصاصی</h3>
+                            </div>
+                            <form action="" method="get" id="searchForm">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="form-group col-md-3">
+                                            <label for="class_name">اسم کلاس</label>
+                                            <input type="text" name="class_name" value="{{ Request::get('class_name') }}"
+                                                id="class_name" class="form-control" placeholder="اسم کلاس را وارد کنید">
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label for="teacher_name">اسم استاد</label>
+                                            <input type="text" name="teacher_name" value="{{ Request::get('teacher_name') }}"
+                                                id="teacher_name" class="form-control" placeholder="اسم استاد را وارد کنید">
+                                        </div>
+
+                                        <div class="form-group col-md-3">
+                                            <button type="submit" class="btn btn-info"
+                                                style="margin-top: 33px">جستجو</button>
+                                            <a href="{{ url('admin/assign_class_teacher/list') }}" class="btn btn-danger"
+                                                style="margin-top: 33px">پاک کردن</a>
+                                        </div>
+                                    </div>
+                            </form>
+                        </div>
 
                         @include('_message')
 
