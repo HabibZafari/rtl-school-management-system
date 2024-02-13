@@ -198,38 +198,54 @@
                                   </p>
                               </a>
                           </li>
-                          <li class="nav-item">
-                              <a href="{{ url('admin/class/list') }}" class="nav-link @if (Request::segment(2) == 'class') active @endif">
-                                  <i class="nav-icon fa fa-book"></i>
-                                  <p>
-                                      کلاس ها
-                                  </p>
-                              </a>
+                          {{-- ///////////// --}}
+
+
+                          <li class="nav-item has-treeview @if (Request::segment(2) == 'class' || Request::segment(2) == 'subject' || Request::segment(2) == 'assign_subject' || Request::segment(2) == 'assign_class_teacher') menu-open @endif">
+                            <a href="#" class="nav-link @if (Request::segment(2) == 'class') active @endif">
+                              <i class="nav-icon fa fa-table"></i>
+                              <p>
+                                اکادمیک
+                                <i class="fa fa-angle-left right"></i>
+                              </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ url('admin/class/list') }}" class="nav-link @if (Request::segment(2) == 'class') active @endif">
+                                        <i class="nav-icon fa fa-book"></i>
+                                        <p>
+                                            کلاس ها
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('admin/subject/list') }}" class="nav-link @if (Request::segment(2) == 'subject') active @endif">
+                                        <i class="nav-icon fa fa-book"></i>
+                                        <p>
+                                            مضامین
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('admin/assign_subject/list') }}" class="nav-link @if (Request::segment(2) == 'assign_subject') active @endif">
+                                        <i class="nav-icon fa fa-book"></i>
+                                        <p>
+                                            اختصاص مضمون
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('admin/assign_class_teacher/list') }}" class="nav-link @if (Request::segment(2) == 'assign_class_teacher') active @endif">
+                                        <i class="nav-icon fa fa-book"></i>
+                                        <p>
+                                            اختصاص کلاس به استاد
+                                        </p>
+                                    </a>
+                                </li>
+                            </ul>
                           </li>
-                          <li class="nav-item">
-                              <a href="{{ url('admin/subject/list') }}" class="nav-link @if (Request::segment(2) == 'subject') active @endif">
-                                  <i class="nav-icon fa fa-book"></i>
-                                  <p>
-                                      مضامین
-                                  </p>
-                              </a>
-                          </li>
-                          <li class="nav-item">
-                              <a href="{{ url('admin/assign_subject/list') }}" class="nav-link @if (Request::segment(2) == 'assign_subject') active @endif">
-                                  <i class="nav-icon fa fa-book"></i>
-                                  <p>
-                                      اختصاص مضمون
-                                  </p>
-                              </a>
-                          </li>
-                          <li class="nav-item">
-                              <a href="{{ url('admin/assign_class_teacher/list') }}" class="nav-link @if (Request::segment(2) == 'assign_class_teacher') active @endif">
-                                  <i class="nav-icon fa fa-book"></i>
-                                  <p>
-                                      اختصاص کلاس به استاد
-                                  </p>
-                              </a>
-                          </li>
+                          {{-- ////// --}}
+
                           <li class="nav-item">
                             <a href="{{ url('admin/account') }}" class="nav-link @if (Request::segment(2) == 'account') active @endif">
                                 <i class="nav-icon fa fa-book"></i>
@@ -254,6 +270,22 @@
                                   <i class="nav-icon fa fa-dashboard"></i>
                                   <p>
                                       داشبورد
+                                  </p>
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a href="{{ url('teacher/my_class_subject') }}" class="nav-link @if (Request::segment(2) == 'my_class_subject') active @endif">
+                                  <i class="nav-icon fa fa-user"></i>
+                                  <p>
+                                      کلاس و مضمون من
+                                  </p>
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a href="{{ url('teacher/my_student') }}" class="nav-link @if (Request::segment(2) == 'my_student') active @endif">
+                                  <i class="nav-icon fa fa-user"></i>
+                                  <p>
+                                      دانش آموزان من
                                   </p>
                               </a>
                           </li>

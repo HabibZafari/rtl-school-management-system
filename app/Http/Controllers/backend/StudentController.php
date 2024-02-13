@@ -159,4 +159,10 @@ class StudentController extends Controller
         return redirect('admin/student/list')->with('success', 'اطلاعات با موفقیت حذف شد');
     }
 
+    public function MyStudent(){
+        $data['getRecord'] = User::getTeacherStudent(Auth::user()->id);
+        $data['header_title'] = "شاگردان من";
+        return view('teacher.my_student', $data);
+    }
+
 }

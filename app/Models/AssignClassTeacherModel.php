@@ -35,20 +35,21 @@ class AssignClassTeacherModel extends Model
         return $return;
     }
 
-    // static public function MyTeacher($class_id)
-    // {
-    //     return self::select('class_subject.*',
-    //     'subject.name as subject_name', 'subject.type as subject_type')
-    //         ->join('subject', 'subject.id', '=', 'class_subject.subject_id')
-    //         ->join('class', 'class.id', '=', 'class_subject.class_id')
-    //         ->join('users', 'users.id', '=', 'class_subject.created_by')
-    //         ->where('class_subject.class_id', '=', $class_id)
-    //         ->where('class_subject.is_delete', '=', 0)
-    //         ->where('class_subject.status', '=', 0)
-    //         ->orderBy('class_subject.id', 'desc')
-    //         ->get();
-    // }
-
+    static public function getMyClassSubject($teacher_id){
+        $return =  self::select('assign_class_teacher.*', 'class.name as class_name','subject.name as subject_name','subject.type as subject_type')
+            ->join('class', 'class.id', '=', 'assign_class_teacher.class_id')
+            ->join('class_subject', 'class_subject.class_id', '=', 'class.id')
+            ->join('subject', 'subject.id', '=', 'class_subject.subject_id')
+            ->where('assign_class_teacher.is_delete', '=', 0)
+            ->where('assign_class_teacher.status', '=', 0)
+            ->where('subject.is_delete', '=', 0)
+            // ->where('subject.status', '=', 0)
+            ->where('class_subject.is_delete', '=', 0)
+            ->where('class_subject.status', '=', 0)
+            ->where('assign_class_teacher.teacher_id', '=', $teacher_id)
+            ->get();
+        return $return;
+    }
     static public function getSingle($id)
     {
         return self::find($id);

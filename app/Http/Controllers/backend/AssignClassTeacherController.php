@@ -127,4 +127,10 @@ class AssignClassTeacherController extends Controller
         $save->save();
         return redirect()->back()->with('success', 'اطلاعات با موفقیت حذف شد');
     }
+
+    public function MyClassSubject(){
+        $data['getRecord'] = AssignClassTeacherModel::getMyClassSubject(Auth::user()->id);
+        $data['header_title'] = "کلاس و مضمون من";
+        return view('teacher.my_class_subject',$data);
+    }
 }
