@@ -10,6 +10,7 @@ use App\Http\Controllers\backend\ParentController;
 use App\Http\Controllers\backend\StudentController;
 use App\Http\Controllers\backend\SubjectController;
 use App\Http\Controllers\backend\TeacherController;
+use App\Http\Controllers\backend\TimeTableController;
 use App\Http\Controllers\backend\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -106,6 +107,20 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/assign_subject/edit_single/{id}', [ClassSubjectController::class, 'assignSubjectEditSingle']);
     Route::post('admin/assign_subject/edit_single/{id}', [ClassSubjectController::class, 'assignSubjectUpdateSingle']);
     Route::get('admin/assign_subject/delete/{id}', [ClassSubjectController::class, 'assignSubjectDelete']);
+
+////////
+
+// class_timetable
+
+    Route::get('admin/class_timetable/list', [TimeTableController::class, 'list']);
+    Route::post('admin/class_timetable/get_subject', [TimeTableController::class, 'get_subject']);
+    Route::post('admin/class_timetable/add', [TimeTableController::class, 'insert_update']);
+    // Route::get('admin/class_timetable/edit/{id}', [TimeTableController::class, 'edit']);
+    // Route::post('admin/class_timetable/edit/{id}', [TimeTableController::class, 'update']);
+    // Route::get('admin/class_timetable/edit_single/{id}', [TimeTableController::class, 'edit_single']);
+    // Route::post('admin/class_timetable/edit_single/{id}', [TimeTableController::class, 'update_single']);
+    // Route::get('admin/class_timetable/delete/{id}', [TimeTableController::class, 'delete']);
+
 
     //assign_class_teacher
 

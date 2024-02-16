@@ -201,8 +201,8 @@
                           {{-- ///////////// --}}
 
 
-                          <li class="nav-item has-treeview @if (Request::segment(2) == 'class' || Request::segment(2) == 'subject' || Request::segment(2) == 'assign_subject' || Request::segment(2) == 'assign_class_teacher') menu-open @endif">
-                            <a href="#" class="nav-link @if (Request::segment(2) == 'class') active @endif">
+                          <li class="nav-item has-treeview @if (Request::segment(2) == 'class' || Request::segment(2) == 'subject' || Request::segment(2) == 'assign_subject' || Request::segment(2) == 'assign_class_teacher' || Request::segment(2) == 'class_timetable') menu-open @endif">
+                            <a href="#" class="nav-link @if (Request::segment(2) == 'class' || Request::segment(2) == 'subject' || Request::segment(2) == 'assign_subject' || Request::segment(2) == 'assign_class_teacher' || Request::segment(2) == 'class_timetable') active @endif">
                               <i class="nav-icon fa fa-table"></i>
                               <p>
                                 اکادمیک
@@ -231,6 +231,14 @@
                                         <i class="nav-icon fa fa-book"></i>
                                         <p>
                                             اختصاص مضمون
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('admin/class_timetable/list') }}" class="nav-link @if (Request::segment(2) == 'class_timetable') active @endif">
+                                        <i class="nav-icon fa fa-book"></i>
+                                        <p>
+                                            تقسیم اوقات کلاس
                                         </p>
                                     </a>
                                 </li>
