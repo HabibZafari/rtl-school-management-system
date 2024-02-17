@@ -64,6 +64,7 @@
                                             <th>اسم مضمون</th>
                                             <th>نوع مضمون</th>
                                             <th>تاریخ ایجاد</th>
+                                            <th>عملیات</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -82,6 +83,8 @@
                                                 </td> --}}
                                                 <td>{{ $value->created_at ? date('Y/m/d', strtotime($value->created_at)) : '' }}
                                                 </td>
+                                                <td><a href="{{url('teacher/my_class_subject/class_timetable/'.$value->class_id.'/'.$value->subject_id)}}"
+                                                     class="btn btn-primary">تقسیم اوقات صنوف من</a></td>
                                                 
                                             </tr>
                                         @endforeach
