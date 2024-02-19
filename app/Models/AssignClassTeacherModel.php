@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Request;
+use WeakMap;
 
 class AssignClassTeacherModel extends Model
 {
@@ -23,21 +24,28 @@ class AssignClassTeacherModel extends Model
             ->join('users as teacher', 'teacher.id', '=', 'assign_class_teacher.teacher_id')
             ->join('class', 'class.id', '=', 'assign_class_teacher.class_id')
             ->join('users', 'users.id', '=', 'assign_class_teacher.created_by');
-            if (!empty(Request::get('class_name'))) {
-                $return = $return->where('class.name', 'like', '%' . Request::get('class_name') . '%');
-            }
-            if (!empty(Request::get('teacher_name'))) {
-                $return = $return->where('teacher.name', 'like', '%' . Request::get('teacher_name') . '%');
-            }
+        if (!empty(Request::get('class_name'))) {
+            $return = $return->where('class.name', 'like', '%' . Request::get('class_name') . '%');
+        }
+        if (!empty(Request::get('teacher_name'))) {
+            $return = $return->where('teacher.name', 'like', '%' . Request::get('teacher_name') . '%');
+        }
         $return =  $return->where('assign_class_teacher.is_delete', '=', 0)
             ->orderBy('assign_class_teacher.id', 'desc')
             ->paginate(10);
         return $return;
     }
 
-    static public function getMyClassSubject($teacher_id){
-        $return =  self::select('assign_class_teacher.*', 'class.name as class_name',
-        'subject.name as subject_name','subject.type as subject_type','class.id as class_id','subject.id as subject_id')
+    static public function getMyClassSubject($teacher_id)
+    {
+        $return =  self::select(
+            'assign_class_teacher.*',
+            'class.name as class_name',
+            'subject.name as subject_name',
+            'subject.type as subject_type',
+            'class.id as class_id',
+            'subject.id as subject_id'
+        )
             ->join('class', 'class.id', '=', 'assign_class_teacher.class_id')
             ->join('class_subject', 'class_subject.class_id', '=', 'class.id')
             ->join('subject', 'subject.id', '=', 'class_subject.subject_id')
@@ -65,5 +73,16 @@ class AssignClassTeacherModel extends Model
     static public function deleteTeacher($class_id)
     {
         return self::where('class_id', '=', $class_id)->delete();
+    }
+
+    static public function getMyTimeTable($class_id, $subject_id)
+    {
+        $getWeek = WeekModel::getWeekUsingName(date('l'));
+        if (!empty($getWeek)) {
+            return ClassSubjectTimetableModel::getRecordClassSubject($class_id, $subject_id, $getWeek->id);
+        } else {
+            return '';
+        }
+        
     }
 }
