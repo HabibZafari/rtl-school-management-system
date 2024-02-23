@@ -77,12 +77,18 @@ class AssignClassTeacherModel extends Model
 
     static public function getMyTimeTable($class_id, $subject_id)
     {
+    
         $getWeek = WeekModel::getWeekUsingName(date('l'));
-        if (!empty($getWeek)) {
-            return ClassSubjectTimetableModel::getRecordClassSubject($class_id, $subject_id, $getWeek->id);
-        } else {
-            return '';
-        }
-        
+        return ClassSubjectTimetableModel::getRecordClassSubject($class_id, $subject_id, $getWeek->id);
     }
+
+    // static public function getMyTimeTable($class_id, $subject_id)
+    // {
+    //     $getWeek = WeekModel::getWeekUsingName(date('l'));
+    //     if ($getWeek) {
+    //         return ClassSubjectTimetableModel::getRecordClassSubject($class_id, $subject_id, $getWeek->id);
+    //     } else {
+    //         return null; // Return null or any appropriate value indicating that week is not found
+    //     }
+    // }
 }

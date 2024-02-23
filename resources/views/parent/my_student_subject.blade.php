@@ -29,6 +29,7 @@
                                         <tr>
                                             <th>اسم</th>
                                             <th>نوعیت</th>
+                                            <th>عملیات</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -36,6 +37,9 @@
                                             <tr>
                                                 <td>{{ $value->subject_name }}</td>
                                                 <td>{{ $value->subject_type }}</td>
+                                                <td><a href="{{ url('parent/my_subject/subject/class_timetable/' 
+                                                    . $value->class_id . '/' . $value->subject_id . '/' . $getUser->id) }}"
+                                                            class="btn btn-primary">تقسیم اوقات صنوف من</a></td>
                                             </tr>
                                         @endforeach
                                     </tbody>
