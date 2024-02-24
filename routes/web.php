@@ -6,6 +6,7 @@ use App\Http\Controllers\backend\AuthController;
 use App\Http\Controllers\backend\ClassController;
 use App\Http\Controllers\backend\ClassSubjectController;
 use App\Http\Controllers\backend\DashboardController;
+use App\Http\Controllers\backend\ExaminationsController;
 use App\Http\Controllers\backend\ParentController;
 use App\Http\Controllers\backend\StudentController;
 use App\Http\Controllers\backend\SubjectController;
@@ -45,6 +46,19 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/admin/edit/{id}', [AdminController::class, 'edit']);
     Route::post('admin/admin/edit/{id}', [AdminController::class, 'update']);
     Route::get('admin/admin/delete/{id}', [AdminController::class, 'delete']);
+
+
+
+
+    // examinations
+   
+    Route::get('admin/examinations/exam/list', [ExaminationsController::class, 'list']);
+    Route::get('admin/examinations/exam/add', [ExaminationsController::class, 'add']);
+    Route::post('admin/examinations/exam/add', [ExaminationsController::class, 'insert']);
+    Route::get('admin/examinations/exam/edit/{id}', [ExaminationsController::class, 'edit']);
+    Route::post('admin/examinations/exam/edit/{id}', [ExaminationsController::class, 'update']);
+    Route::get('admin/examinations/exam/delete/{id}', [ExaminationsController::class, 'delete']);
+
 
     //students
 
